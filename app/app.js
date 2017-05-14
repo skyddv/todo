@@ -16,11 +16,11 @@ class Todo extends React.Component {
   render(){
     return (
       <div>
-          <form class="pure-form">
+          <form className="pure-form">
              <fieldset>
          <legend>DNT PBDATA</legend>
          <input type="text" value={this.state.value} onChange={e => this.setState({value: e.target.value})}/>
-        <button type="button" classname="pure-button pure-button-primary" onClick={this.handleclear}>Add</button>
+        <button type="button" className="pure-button pure-button-primary" onClick={this.handleclear}>Add</button>
     </fieldset>
 </form>
       </div>
@@ -34,7 +34,7 @@ class Todo1 extends React.Component {
           <div className="pure-u-1-24">
             <input type="checkbox" onChange={()=> this.props.onComplate(this.props.id)}/>
           </div>
-          <div class="pure-u-1-24">
+          <div className="pure-u-1-24">
             {this.props.content}
           </div>
       </div>)
