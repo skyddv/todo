@@ -10,12 +10,13 @@ new devserver(webpack(config),{
     hot:true,
     stats: {
        chunks:false
-    }
-}).listen(8080, '0.0.0.0',err =>{
+    },
+    proxy:[{path: '/api/**', target: 'http://127.0.0.1:8081/',},],
+}).listen(3000, '127.0.0.1',err =>{
     if (err) {
         console.log(err)
     } else
         {
-            console.log("listen on 8080")
+            console.log("listen on 3000")
         }
 });

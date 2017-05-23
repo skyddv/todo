@@ -15,9 +15,9 @@ export default class List extends React.Component {
         return (
             <div>
                 {
-                this.props.todos.map(it => <Item key={it.id} todo={it}
-                                                 onReopen = {this.props.onReopen}
-                                                 onComplete={this.props.onComplete}/>)
+                    this.props.todos.map(it => <Item key={it.id} todo={it}
+                                                     onReopen={this.props.onReopen}
+                                                     onComplete={this.props.onComplete}/>)
                 }
             </div>
         )

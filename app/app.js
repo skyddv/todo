@@ -29,12 +29,18 @@ class Todo extends React.Component {
 }
 
 class Todo1 extends React.Component {
+    // handleChange(e) {
+    //     if (e.target.checked) {
+    //         this.props.onComplate(this.props.id)
+    //     }
+    // }
+
   render() {
     return (<div className="prue-g">
           <div className="pure-u-1-24">
             <input type="checkbox" onChange={()=> this.props.onComplate(this.props.id)}/>
           </div>
-          <div className="pure-u-1-24">
+          <div className="pure-u-1-24"><span style={{letterSpacing:'normal',textAlign:'left'}}/>
             {this.props.content}
           </div>
       </div>)
@@ -56,7 +62,7 @@ class TodoList extends React.Component {
 export default class app extends React.Component {
   constructor(props) {
     super(props);
-    this.state={todos:[]}
+    this.state={todos:[]};
     this.HhComple = this.HhComple.bind(this);
     this.HhTodo = this.HhTodo.bind(this);
   }
