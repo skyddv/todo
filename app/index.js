@@ -4,10 +4,15 @@ import App from './app_bak';
 import createStore from 'redux/lib/createStore';
 import rootReducer from './reducers';
 import Provider from 'react-redux/lib/components/Provider';
+import applyMiddleware from  'redux/lib/applyMiddleware';
+import thunkMiddleware from  'redux-thunk'
 
 
 const root = document.getElementById("root");
-const store = createStore(rootReducer);
+const cswm = applyMiddleware(
+    thunkMiddleware
+)(createStore)
+const store = cswm(rootReducer);
 
 ReactDOM.render(<Provider store={store}>
     <App/>

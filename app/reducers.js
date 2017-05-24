@@ -10,6 +10,7 @@ const initialState = {
     next_id:0
 };
 
+//todoAPP run as a store
 export function todoApp(state=initialState, action) {
     let todos = [];
     switch(action.type) {

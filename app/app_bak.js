@@ -5,7 +5,7 @@ import List from './component/list';
 import Footer from './component/foler';
 import * as Actions from './action';
 
-@connect(state => ({todoApp: state.todoApp}))
+@connect(state => ({todoApp: state.todoApp}), {add: Actions.add, done: Actions.done, reopen: Actions.reopen, filter: Actions.filter})
 export default class app extends React.Component {
     constructor(props) {
         super(props);
@@ -35,17 +35,20 @@ export default class app extends React.Component {
         //             this.getTodos()
         //         }
         //     }).catch(err => console.log(err))
-        this.props.dispatch(Actions.add(value));
+        //this.props.dispatch(Actions.add(value));
+        this.props.add(value);
     }
 
     HandleComplete(id) {
         // fetch(`/api/todo/${id}/done`, {method: 'PUT'}).then(() => this.getTodos())
-        this.props.dispatch(Actions.done(id));
+        //this.props.dispatch(Actions.done(id));
+        this.props.done(id);
     }
 
     handleReopen(id) {
         // fetch(`/api/todo/${id}/reopen`, {method: 'PUT'}).then(() => this.getTodos())
-        this.props.dispatch(Actions.reopen(id));
+        //this.props.dispatch(Actions.reopen(id));
+        this.props.reopen(id);
     }
 
     handleFilter(filter) {
@@ -53,14 +56,15 @@ export default class app extends React.Component {
         //     this.setState({filter: filter});
         // }
         // this.getTodos(filter);
-        this.props.dispatch(Actions.filter(filter));
+        //this.props.dispatch(Actions.filter(filter));
+        this.props.filter(filter);
     }
 
 
     render() {
         let todos = this.props.todoApp.todos;
         if (this.props.todoApp.filter === 'todo') {
-            todos = this.props.todoApp.todos.filter(it => ! it.done);
+            todos = this.props.todoApp.todos.filter(it => !it.done);
         }
         return (
             <div>
