@@ -9,9 +9,7 @@ import thunkMiddleware from  'redux-thunk'
 
 
 const root = document.getElementById("root");
-const cswm = applyMiddleware(
-    thunkMiddleware
-)(createStore)
+const cswm = applyMiddleware(thunkMiddleware)(createStore);
 const store = cswm(rootReducer);
 
 ReactDOM.render(<Provider store={store}>

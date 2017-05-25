@@ -5,7 +5,8 @@ import List from './component/list';
 import Footer from './component/foler';
 import * as Actions from './action';
 
-@connect(state => ({todoApp: state.todoApp}), {add: Actions.add, done: Actions.done, reopen: Actions.reopen, filter: Actions.filter})
+@connect(state => ({todoApp: state.todoApp}), {add: Actions.add, done: Actions.done, reopen: Actions.reopen, filter: Actions.filter, list: Actions.list
+})
 export default class app extends React.Component {
     constructor(props) {
         super(props);
@@ -15,6 +16,7 @@ export default class app extends React.Component {
         this.handleCreated = this.handleCreated.bind(this);
         this.handleFilter = this.handleFilter.bind(this);
   //      this.getTodos();
+        this.props.list(this.props.todoApp.filter);
     }
 
 
@@ -60,9 +62,17 @@ export default class app extends React.Component {
         this.props.filter(filter);
     }
 
+    componentWillReceiveProps(props) {
+        if(props.todoApp.needFetch) {
+            this.props.list(props.todoApp.filter);
+        }
+        this.props = props;
+    }
+
 
     render() {
         let todos = this.props.todoApp.todos;
+        console.log(todos)
         if (this.props.todoApp.filter === 'todo') {
             todos = this.props.todoApp.todos.filter(it => !it.done);
         }
